@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architect-project version="1.0" appversion="1.0.9">
+ <project-name>sistema jogo power architect</project-name>
+ <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
+ <project-data-sources>
+  <data-source id="DS0">
+   <property key="Logical" value="PlayPen Database" />
+  </data-source>
+ </project-data-sources>
+ <source-databases>
+ </source-databases>
+ <target-database id="ppdb" dbcs-ref="DS0">
+  <table id="TAB1" populated="true" UUID="4763a2b0-3749-40f7-a620-7691b2ed319f" name="cenarios" objectType="TABLE" physicalName="cenarios" >
+   <remarks>Armazena cenários dos níveis.</remarks>
+   <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL2" populated="true" UUID="f216052e-5132-49c1-8c95-33b654d512de" autoIncrement="false" autoIncrementSequenceName="cenarios_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada cenário.</remarks>
+    </column>
+    <column id="COL3" populated="true" UUID="80d572a9-ba2d-4091-a60e-3472ab0ccae1" autoIncrement="false" autoIncrementSequenceName="cenarios_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome do cenário de cada nível.</remarks>
+    </column>
+    <column id="COL4" populated="true" UUID="3ab0bca8-39d1-4eed-b4ed-2aab1b3870d0" autoIncrement="false" autoIncrementSequenceName="cenarios_tema_seq" defaultValue="" name="tema" nullable="0" physicalName="tema" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Divisão de temas para agrupar cenários semelhantes.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB13" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB12" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB14" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX5" populated="true" UUID="7bac01c1-9dc1-4cf7-bb93-067a66fb2c3c" clustered="false" name="codigo_cenario_pk" physicalName="codigo_cenario_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC6" populated="true" UUID="2c7087f7-248f-4512-afce-83252ce0aaf5" ascendingOrDescending="UNSPECIFIED" column-ref="COL2" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB7" populated="true" UUID="f5911ee3-0ead-4e7a-8545-7d1b6dfb047c" name="personagens" objectType="TABLE" physicalName="personagens" >
+   <remarks>Armazena os personagens dos níveis do jogo.</remarks>
+   <folder id="FOLTAB71" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL8" populated="true" UUID="ad8fe758-04b9-49e5-b7af-5de2d09fa985" autoIncrement="false" autoIncrementSequenceName="personagens_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada personagem.</remarks>
+    </column>
+    <column id="COL9" populated="true" UUID="d1ece94d-6a87-433a-bab1-29afa07f280e" autoIncrement="false" autoIncrementSequenceName="personagens_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome completo de cada personagem.</remarks>
+    </column>
+    <column id="COL10" populated="true" UUID="4b7ddb7d-3ab2-4caa-b12b-ccc67b58e22f" autoIncrement="false" autoIncrementSequenceName="sprites_codigo_imagem_seq" defaultValue="" name="codigo_imagem" nullable="0" physicalName="codigo_imagem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada imagem de cada sprite do personagem.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB73" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB72" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB74" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX11" populated="true" UUID="7d0c9736-036c-472f-ad87-19437d54505c" clustered="false" name="codigo_personagens_pk" physicalName="codigo_personagens_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC12" populated="true" UUID="8d31fa54-262a-4d6a-a2cb-a7270d48f4d8" ascendingOrDescending="UNSPECIFIED" column-ref="COL8" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB13" populated="true" UUID="723c1768-dc07-46a6-b788-bb077dabaa34" name="niveis" objectType="TABLE" physicalName="niveis" >
+   <remarks>Armazena os níveis de cada jogo.</remarks>
+   <folder id="FOLTAB131" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL14" populated="true" UUID="4f6ab138-7800-4c8e-a583-fbf3ee079287" autoIncrement="false" autoIncrementSequenceName="niveis_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada nível.</remarks>
+    </column>
+    <column id="COL15" populated="true" UUID="73952165-e22d-48df-b86d-cff2d06c13b6" autoIncrement="false" autoIncrementSequenceName="niveis_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome de cada nível.</remarks>
+    </column>
+    <column id="COL16" populated="true" UUID="9d1917ef-eec3-4816-ab6e-a672bd9f658a" autoIncrement="false" autoIncrementSequenceName="niveis_objetivo_seq" defaultValue="" name="objetivo" nullable="0" physicalName="objetivo" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Objetivo do nível.</remarks>
+    </column>
+    <column id="COL17" populated="true" UUID="633fb9a6-7ef7-46ec-b7fa-5dfd2ed5ff9d" autoIncrement="false" autoIncrementSequenceName="niveis_codigo_jogos_seq" defaultValue="" name="codigo_jogos" nullable="0" physicalName="codigo_jogos" precision="3" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>FK para a tabela jogos.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB133" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB132" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB134" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX18" populated="true" UUID="a69eb6e5-5564-40cb-83f8-af1ce980bf92" clustered="false" name="niveis_pk" physicalName="niveis_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC19" populated="true" UUID="f01c83bc-66d9-4b5b-ad4e-4eb132fd0fcd" ascendingOrDescending="UNSPECIFIED" column-ref="COL14" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB20" populated="true" UUID="0d63aba2-60e0-49f0-ae89-c02d0512b467" name="objetos" objectType="TABLE" physicalName="objetos" >
+   <remarks>Armazena os objetos que compôem os níveis dos jogos.</remarks>
+   <folder id="FOLTAB201" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL21" populated="true" UUID="d31a8b67-cf60-48a6-8e6c-fa5642f402fd" autoIncrement="false" autoIncrementSequenceName="objetos_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada objeto.</remarks>
+    </column>
+    <column id="COL22" populated="true" UUID="46b4a0e0-49f5-4009-97e1-2b2f5a2ad0f4" autoIncrement="false" autoIncrementSequenceName="objetos_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome de cada objeto.</remarks>
+    </column>
+    <column id="COL23" populated="true" UUID="9be6a53e-ac0f-413f-8c4e-a5e068e9d9dd" autoIncrement="false" autoIncrementSequenceName="objetos_descricao_seq" defaultValue="" name="descricao" nullable="1" physicalName="descricao" precision="700" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Descrição dos elementos visuais e características do objeto.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB203" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB202" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB204" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX24" populated="true" UUID="84629401-c202-47dd-ae75-3cac9e2bfa05" clustered="false" name="codigo_objetos_pk" physicalName="codigo_objetos_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC25" populated="true" UUID="9b4b7135-eaa1-4e67-a466-add7b2c2bdb7" ascendingOrDescending="UNSPECIFIED" column-ref="COL21" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB26" populated="true" UUID="36c2c6d2-d2dc-4545-8bb8-d88b6f0bf0ba" name="jogos" objectType="TABLE" physicalName="jogos" >
+   <remarks>Armazena o jogo.</remarks>
+   <folder id="FOLTAB261" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL27" populated="true" UUID="8f3627ed-453d-4862-9db5-d747674e2c4e" autoIncrement="false" autoIncrementSequenceName="jogos_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada jogo.</remarks>
+    </column>
+    <column id="COL28" populated="true" UUID="135beb6c-78bc-46cb-b249-4a9c3801e10a" autoIncrement="false" autoIncrementSequenceName="jogos_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome do jogo.</remarks>
+    </column>
+    <column id="COL29" populated="true" UUID="e96b37c3-7391-4cb4-9aef-b8f72a2a89e1" autoIncrement="false" autoIncrementSequenceName="jogos_objetivo_seq" defaultValue="" name="objetivo" nullable="0" physicalName="objetivo" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Objetivo geral do jogo.</remarks>
+    </column>
+    <column id="COL30" populated="true" UUID="4b1efc5c-7e48-4d02-b3a2-62366f809164" autoIncrement="false" autoIncrementSequenceName="jogos_numero_niveis_seq" defaultValue="" name="numero_niveis" nullable="0" physicalName="numero_niveis" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>Quantidade de níveis que o jogo possui.</remarks>
+    </column>
+    <column id="COL31" populated="true" UUID="d8d9664a-0fd8-49fe-9643-a19498d35005" autoIncrement="false" autoIncrementSequenceName="jogos_data_criacao_seq" defaultValue="" name="data_criacao" nullable="0" physicalName="data_criacao" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks>Data do início da criação do jogo.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB263" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB262" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB264" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX32" populated="true" UUID="757b326e-1900-49b9-9ab6-dfbdebfffe65" clustered="false" name="jogos_pk" physicalName="jogos_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC33" populated="true" UUID="416d4811-5047-4d4a-9b70-ad27a39e7a7b" ascendingOrDescending="UNSPECIFIED" column-ref="COL27" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB34" populated="true" UUID="09871445-21a3-4537-accf-1610911628af" name="configuracoes" objectType="TABLE" physicalName="configuracoes" >
+   <remarks>Armazena configurações básicas de cada jogo.</remarks>
+   <folder id="FOLTAB341" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL35" populated="true" UUID="4199ce0b-b635-4223-8f21-e1cf42db2898" autoIncrement="false" autoIncrementSequenceName="configuracoes_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada configuração.</remarks>
+    </column>
+    <column id="COL36" populated="true" UUID="5f0f503b-ae05-4927-b410-68f4ba857a13" autoIncrement="false" autoIncrementSequenceName="configuracoes_volume_seq" defaultValue="" name="volume" nullable="0" physicalName="volume" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>Volume geral de cada jogo. É uma valor de 0 a 100.</remarks>
+    </column>
+    <column id="COL37" populated="true" UUID="7df5ed64-c7b5-4ccb-919e-f82a3eca8b31" autoIncrement="false" autoIncrementSequenceName="configuracoes_brilho_seq" defaultValue="" name="brilho" nullable="0" physicalName="brilho" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>Brilho geral do jogo. É uma valor de 0 a 100.</remarks>
+    </column>
+    <column id="COL38" populated="true" UUID="4a39b4ef-4b23-4b0b-b4ee-31739704c5f6" autoIncrement="false" autoIncrementSequenceName="configuracoes_codigo_cor_seq" defaultValue="" name="codigo_cor" nullable="0" physicalName="codigo_cor" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>FK para a tabela cores.</remarks>
+    </column>
+    <column id="COL39" populated="true" UUID="26710b6d-fcdf-43e7-9fff-ac6db3df9530" autoIncrement="false" autoIncrementSequenceName="configuracoes_codigo_imagem_seq" defaultValue="" name="codigo_imagem" nullable="0" physicalName="codigo_imagem" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>FK para a tabela background.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB343" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB342" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB344" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX40" populated="true" UUID="d8ca0b5c-5aa8-4fa5-9cdc-55b816c3361c" clustered="false" name="configuracoes_pk" physicalName="configuracoes_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC41" populated="true" UUID="ac750497-3f5b-42af-8218-7041a322aecb" ascendingOrDescending="UNSPECIFIED" column-ref="COL35" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB42" populated="true" UUID="cf5a60d6-88f5-4c80-b05a-c5d08760bc51" name="background" objectType="TABLE" physicalName="background" >
+   <remarks>Tabela de identificação de imagens de fundo. Associa cada código único a uma imagem específica.</remarks>
+   <folder id="FOLTAB421" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL43" populated="true" UUID="ad544bbe-3de6-4893-8b48-037a2af74771" autoIncrement="false" autoIncrementSequenceName="background_codigo_imagem_seq" defaultValue="" name="codigo_imagem" nullable="0" physicalName="codigo_imagem" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada imagem do background.</remarks>
+    </column>
+    <column id="COL44" populated="true" UUID="49b24eea-d2a5-4ca9-920e-7e680f4ba519" autoIncrement="false" autoIncrementSequenceName="background_imagem_fundo_seq" defaultValue="" name="imagem_fundo" nullable="0" physicalName="imagem_fundo" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB423" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB422" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB424" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX45" populated="true" UUID="87813989-99e9-4b8a-a4ad-d6ad6c6ee8db" clustered="false" name="background_pk" physicalName="background_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC46" populated="true" UUID="62f656ed-db40-40ba-a824-b5932f2b28db" ascendingOrDescending="UNSPECIFIED" column-ref="COL43" name="codigo_imagem" physicalName="codigo_imagem" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB47" populated="true" UUID="acb7aa79-9a93-4dc7-9794-4f458d6d45f8" name="cores" objectType="TABLE" physicalName="cores" >
+   <remarks>Tabela de identificação de cores. Associa cada código único a uma cor específica.</remarks>
+   <folder id="FOLTAB471" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL48" populated="true" UUID="3490079b-aeaf-471e-9d0f-51d9a5381d0c" autoIncrement="false" autoIncrementSequenceName="cores_codigo_cor_seq" defaultValue="" name="codigo_cor" nullable="0" physicalName="codigo_cor" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada cor.</remarks>
+    </column>
+    <column id="COL49" populated="true" UUID="ec7633e2-5826-4de4-81e6-7a9d5b437144" autoIncrement="false" autoIncrementSequenceName="cores_cor_seq" defaultValue="" name="cor" nullable="0" physicalName="cor" precision="15" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Hexadecimal da cor.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB473" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB472" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB474" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX50" populated="true" UUID="1e2dafb5-d04f-4a68-b042-cde587e67a5d" clustered="false" name="cores_pk" physicalName="cores_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC51" populated="true" UUID="89b04aeb-b070-415c-b167-494e258b1d5e" ascendingOrDescending="UNSPECIFIED" column-ref="COL48" name="codigo_cor" physicalName="codigo_cor" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB52" populated="true" UUID="79fa7ca2-3ffc-46e7-9ef9-1889a99bd9c3" name="composicoes" objectType="TABLE" physicalName="composicoes" >
+   <remarks>Tabela de relacionamento N:N entre objetos e níveis. Armazena a posição inicial (spawn) dos objetos e seus pontos.</remarks>
+   <folder id="FOLTAB521" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL53" populated="true" UUID="a386ff66-94d0-4142-8594-76f01db078ed" autoIncrement="false" autoIncrementSequenceName="niveis_codigo_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    <column id="COL54" populated="true" UUID="88a2c8e0-31f7-45b0-91b9-546d206c3cfa" autoIncrement="false" autoIncrementSequenceName="objetos_codigo_seq" defaultValue="" name="codigo_objeto" nullable="0" physicalName="codigo_objeto" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos objetos.</remarks>
+    </column>
+    <column id="COL55" populated="true" UUID="aea159cf-39c4-4773-a616-9e14ce4b4991" autoIncrement="false" autoIncrementSequenceName="composicoes_ponto_inicio_seq" defaultValue="" name="ponto_inicio" nullable="0" physicalName="ponto_inicio" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Posição/coordenada inicial (spawn) de cada objeto em relação ao nível.</remarks>
+    </column>
+    <column id="COL56" populated="true" UUID="bcf379a2-d5f3-4607-b2dc-a286e2d9e8fb" autoIncrement="false" autoIncrementSequenceName="composicoes_pontos_seq" defaultValue="" name="pontos" nullable="0" physicalName="pontos" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>definem os espaços que podem ser ocupados por personagens e objetos (coordenadas)</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB523" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB522" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB524" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX57" populated="true" UUID="b428cb6f-e196-45f4-b492-2878ee7f34cf" clustered="false" name="composicoes_pk" physicalName="composicoes_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC58" populated="true" UUID="d8571799-cd67-4c32-8af4-3cdf61df3121" ascendingOrDescending="UNSPECIFIED" column-ref="COL53" name="codigo_nivel" physicalName="codigo_nivel" />
+     <index-column id="IDC59" populated="true" UUID="c14770ca-6daf-4ea3-8bce-aa60b027cda8" ascendingOrDescending="UNSPECIFIED" column-ref="COL54" name="codigo_objeto" physicalName="codigo_objeto" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB60" populated="true" UUID="05c0045e-96aa-470a-ac6e-034a97c90683" name="partidas" objectType="TABLE" physicalName="partidas" >
+   <remarks>Tabela de relacionamento N:N entre jogadores e niveis.</remarks>
+   <folder id="FOLTAB601" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL61" populated="true" UUID="aafa51bc-b87c-448c-9f20-376b6e22d2cf" autoIncrement="false" autoIncrementSequenceName="partidas_codigo_seq" defaultValue="" name="codigo_jogadores" nullable="0" physicalName="codigo_jogadores" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos jogadores.</remarks>
+    </column>
+    <column id="COL62" populated="true" UUID="d9d6b140-9d5d-4b5e-b48a-2bbe6abe6477" autoIncrement="false" autoIncrementSequenceName="partidas_codigo_nivel_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    <column id="COL63" populated="true" UUID="7f8c676a-0938-47f8-a6ee-e6f0bdd49fa6" autoIncrement="false" autoIncrementSequenceName="partidas_data_inicio_seq" defaultValue="" name="data_inicio" nullable="0" physicalName="data_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks>Data de início da partida.</remarks>
+    </column>
+    <column id="COL64" populated="true" UUID="a1404af8-aba5-4c83-9a6f-7d549579682a" autoIncrement="false" autoIncrementSequenceName="partidas_data_fim_seq" defaultValue="" name="data_fim" nullable="0" physicalName="data_fim" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks>Data da finalização da partida.</remarks>
+    </column>
+    <column id="COL65" populated="true" UUID="ed0e98b1-1f17-4c2a-90a4-99360009e459" autoIncrement="false" autoIncrementSequenceName="partidas_hora de início_seq" defaultValue="" name="hora_inicio" nullable="0" physicalName="hora_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
+     <remarks>Hora em que a partida iniciou.</remarks>
+    </column>
+    <column id="COL66" populated="true" UUID="b252ce9b-84d2-4899-a47f-e4ebd39be455" autoIncrement="false" autoIncrementSequenceName="partidas_hora_fim_seq" defaultValue="" name="hora_fim" nullable="0" physicalName="hora_fim" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
+     <remarks>Hora em que a partida encerrou.</remarks>
+    </column>
+    <column id="COL67" populated="true" UUID="0867643a-c84f-4684-9e39-3b297c91674a" autoIncrement="false" autoIncrementSequenceName="partidas_pontuacao_seq" defaultValue="" name="pontuacao" nullable="0" physicalName="pontuacao" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>Pontuação feita pelo jogador na partida.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB603" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB602" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB604" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX68" populated="true" UUID="478e6069-2134-4eef-9142-16d89f2c8375" clustered="false" name="partidas_pk" physicalName="partidas_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC69" populated="true" UUID="114d1a7a-4253-4e5b-9487-24cf824d097e" ascendingOrDescending="UNSPECIFIED" column-ref="COL61" name="codigo_jogadores" physicalName="codigo_jogadores" />
+     <index-column id="IDC70" populated="true" UUID="17dd4b56-c9fc-4cbb-8be1-4521d8c8566f" ascendingOrDescending="UNSPECIFIED" column-ref="COL62" name="codigo_nivel" physicalName="codigo_nivel" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB71" populated="true" UUID="e5a731c1-f04f-438b-a355-f87b521eeb9c" name="jogadores" objectType="TABLE" physicalName="jogadores" >
+   <remarks>Armazena informações sobre os jogadores.</remarks>
+   <folder id="FOLTAB711" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL72" populated="true" UUID="1460d950-d588-4696-9755-34989fbeb9f2" autoIncrement="false" autoIncrementSequenceName="jogadores_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada jogador.</remarks>
+    </column>
+    <column id="COL73" populated="true" UUID="9a9759ba-7b56-49de-a333-50605cd5a9f9" autoIncrement="false" autoIncrementSequenceName="jogadores_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome do jogador.</remarks>
+    </column>
+    <column id="COL74" populated="true" UUID="ddf445c7-cbf5-470a-bd15-7af567c31587" autoIncrement="false" autoIncrementSequenceName="jogadores_apelido_seq" defaultValue="" name="apelido" nullable="0" physicalName="apelido" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Apelido do jogador. Também conhecido como nickname.</remarks>
+    </column>
+    <column id="COL75" populated="true" UUID="e0991d65-9e0a-4ef2-a308-726a4652bf69" autoIncrement="false" autoIncrementSequenceName="jogadores_imagem_seq" defaultValue="" name="imagem" nullable="0" physicalName="imagem" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Foto de perfil do jogador. Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.</remarks>
+    </column>
+    <column id="COL76" populated="true" UUID="1a19ca13-11f5-4048-b9f5-35acfcd573c8" autoIncrement="false" autoIncrementSequenceName="jogadores_data_registro_seq" defaultValue="" name="data_registro" nullable="0" physicalName="data_registro" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks>Data de quando o jogador criou sua conta.</remarks>
+    </column>
+    <column id="COL77" populated="true" UUID="7a710bd3-1c4f-4659-aaa7-907dd0a287f5" autoIncrement="false" autoIncrementSequenceName="local_pais_codigo_pais_seq" defaultValue="" name="codigo_pais" nullable="1" physicalName="codigo_pais" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada país do jogador.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB713" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB712" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB714" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX78" populated="true" UUID="8a29869b-89cc-4196-b5fe-c7a5f7cdfa34" clustered="false" name="jogadores_pk" physicalName="jogadores_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC79" populated="true" UUID="ef3c734b-3272-4fd8-80ff-936007d2a7e1" ascendingOrDescending="UNSPECIFIED" column-ref="COL72" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB80" populated="true" UUID="9c514567-af7b-41d9-8cac-c5265509bb8f" name="missoes" objectType="TABLE" physicalName="missoes" >
+   <remarks>Armazena as missões dos níveis.</remarks>
+   <folder id="FOLTAB801" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL81" populated="true" UUID="fd3aac78-9c46-4198-98aa-a979567b784c" autoIncrement="false" autoIncrementSequenceName="missoes_codigo_missoes_seq" defaultValue="" name="codigo_missoes" nullable="0" physicalName="codigo_missoes" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada missão.</remarks>
+    </column>
+    <column id="COL82" populated="true" UUID="2499226a-d6d7-4f37-a4a9-da800f1593f6" autoIncrement="false" autoIncrementSequenceName="missoes_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome da missão.</remarks>
+    </column>
+    <column id="COL83" populated="true" UUID="54dd5414-8abd-40f0-9b01-d1b2c9bbef03" autoIncrement="false" autoIncrementSequenceName="missoes_descricao_seq" defaultValue="" name="descricao" nullable="1" physicalName="descricao" precision="500" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Descrições sobre as missões.</remarks>
+    </column>
+    <column id="COL84" populated="true" UUID="f7cb435d-066e-4f7f-a189-817a4666d859" autoIncrement="false" autoIncrementSequenceName="missoes_tempo_max_seq" defaultValue="" name="tempo_max" nullable="1" physicalName="tempo_max" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
+     <remarks>Tempo máximo para fazer a missão.</remarks>
+    </column>
+    <column id="COL85" populated="true" UUID="f8ef810e-56c4-4976-afcd-7a77809e35f0" autoIncrement="false" autoIncrementSequenceName="missoes_pontuacao_seq" defaultValue="" name="pontuacao" nullable="0" physicalName="pontuacao" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>Pontuação da missão.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB803" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB802" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB804" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX86" populated="true" UUID="2693e23b-dbf4-4de7-95be-946d7a194022" clustered="false" name="missoes_pk" physicalName="missoes_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC87" populated="true" UUID="da6ed30d-ab0a-4133-82e0-0c6034276052" ascendingOrDescending="UNSPECIFIED" column-ref="COL81" name="codigo_missoes" physicalName="codigo_missoes" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB88" populated="true" UUID="4b637c9d-aff2-44f0-89c8-5b483eee04dd" name="compoem" objectType="TABLE" physicalName="compoem" >
+   <remarks>Tabela de relacionamento N:N entre cenarios e niveis.</remarks>
+   <folder id="FOLTAB881" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL89" populated="true" UUID="89dfae68-9eed-4581-a430-74f643d957ee" autoIncrement="false" autoIncrementSequenceName="compoem_codigo_cenario_seq" defaultValue="" name="codigo_cenario" nullable="0" physicalName="codigo_cenario" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos cenários.</remarks>
+    </column>
+    <column id="COL90" populated="true" UUID="8c14d443-9fd2-427a-af5f-28b6b00b553f" autoIncrement="false" autoIncrementSequenceName="compoem_codigo_nivel_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB883" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB882" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB884" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX91" populated="true" UUID="b155d210-ce3b-4efb-9a37-d410cd640e81" clustered="false" name="compoem_pk" physicalName="compoem_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC92" populated="true" UUID="fa87bdb1-c808-497e-9b18-3aff04456c57" ascendingOrDescending="UNSPECIFIED" column-ref="COL89" name="codigo_cenario" physicalName="codigo_cenario" />
+     <index-column id="IDC93" populated="true" UUID="b07bf10f-2d46-4900-a19c-7b96c0a91158" ascendingOrDescending="UNSPECIFIED" column-ref="COL90" name="codigo_nivel" physicalName="codigo_nivel" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB94" populated="true" UUID="0b6d81c8-2a24-4d28-a4e2-960b487475ac" name="envolvem" objectType="TABLE" physicalName="envolvem" >
+   <remarks>Tabela de relacionamento que liga personagens com níveis.</remarks>
+   <folder id="FOLTAB941" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL95" populated="true" UUID="ccd81f81-8605-4388-b1ab-fa61ec6846a9" autoIncrement="false" autoIncrementSequenceName="niveis_codigo_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    <column id="COL96" populated="true" UUID="5bcea52b-c385-4316-9159-4f7dbac53a38" autoIncrement="false" autoIncrementSequenceName="personagens_codigo_seq" defaultValue="" name="codigo_personagem" nullable="0" physicalName="codigo_personagem" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos personagens.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB943" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB942" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB944" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX97" populated="true" UUID="85284aeb-8651-4168-a8cc-f33aa1c6c4bf" clustered="false" name="envolvem_pk" physicalName="envolvem_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC98" populated="true" UUID="cc44cf29-9ca8-4a6a-a8ca-c8e00e4f27df" ascendingOrDescending="UNSPECIFIED" column-ref="COL95" name="codigo_nivel" physicalName="codigo_nivel" />
+     <index-column id="IDC99" populated="true" UUID="5ff4e4dc-d58e-416c-9a2e-21f8cb62fea5" ascendingOrDescending="UNSPECIFIED" column-ref="COL96" name="codigo_personagem" physicalName="codigo_personagem" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB100" populated="true" UUID="0e2b8295-0403-47ec-9e4e-f05d473fcf63" name="realizam" objectType="TABLE" physicalName="realizam" >
+   <remarks>Tabela de relacionamento N:N entre missões e niveis.</remarks>
+   <folder id="FOLTAB1001" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL101" populated="true" UUID="b22379dd-14b0-4b44-b5c4-4016645475a9" autoIncrement="false" autoIncrementSequenceName="realizam_codigo_missoes_seq" defaultValue="" name="codigo_missoes" nullable="0" physicalName="codigo_missoes" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação das missões.</remarks>
+    </column>
+    <column id="COL102" populated="true" UUID="638a4b42-0b7b-48e5-bf67-14e18c1dfb0a" autoIncrement="false" autoIncrementSequenceName="realizam_codigo_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1003" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1002" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1004" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX103" populated="true" UUID="96109af1-3396-4d3d-907f-04ba0a220e23" clustered="false" name="realizam_pk" physicalName="realizam_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC104" populated="true" UUID="99e333e1-9edf-4953-bc35-38f7db11db7a" ascendingOrDescending="UNSPECIFIED" column-ref="COL101" name="codigo_missoes" physicalName="codigo_missoes" />
+     <index-column id="IDC105" populated="true" UUID="e23f7d59-13c3-46d7-91ff-493436f29c8d" ascendingOrDescending="UNSPECIFIED" column-ref="COL102" name="codigo_nivel" physicalName="codigo_nivel" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB106" populated="true" UUID="df98f59a-1769-4aac-8c16-429b50d01106" name="trilha_sonora" objectType="TABLE" physicalName="trilha_sonora" >
+   <remarks>Armazena as trilhas sonoras dos níveis.</remarks>
+   <folder id="FOLTAB1061" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL107" populated="true" UUID="e302e155-8873-4cc3-b5b8-e44c5fa02064" autoIncrement="false" autoIncrementSequenceName="trilha_sonora_codigo_seq" defaultValue="" name="codigo" nullable="0" physicalName="codigo" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PK da tabela. É o código de identificação de cada trilha sonora.</remarks>
+    </column>
+    <column id="COL108" populated="true" UUID="b3d5dd50-391d-44e1-b27e-9729ecd7c33d" autoIncrement="false" autoIncrementSequenceName="trilha_sonora_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome da trilha sonora.</remarks>
+    </column>
+    <column id="COL109" populated="true" UUID="0ae61a07-3f1d-4617-bdc2-d4f0acab6cd5" autoIncrement="false" autoIncrementSequenceName="trilha_sonora_valencia_seq" defaultValue="" name="valencia" nullable="0" physicalName="valencia" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Valência. Pode ser negativa, positiva e neutra.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1063" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1062" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1064" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX110" populated="true" UUID="669d356c-f39f-4d29-8181-90cc35f37d87" clustered="false" name="trilha_sonora_pk" physicalName="trilha_sonora_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC111" populated="true" UUID="a0dc118d-f568-49a6-ba12-0c5d029ffa17" ascendingOrDescending="UNSPECIFIED" column-ref="COL107" name="codigo" physicalName="codigo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB112" populated="true" UUID="0595735f-2ae1-4a3b-956e-43ebc0e341fc" name="consomem" objectType="TABLE" physicalName="consomem" >
+   <remarks>Tabela de relacionamento N:N entre níveis e trilha_sonora.</remarks>
+   <folder id="FOLTAB1121" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL113" populated="true" UUID="ac225276-160d-438c-8110-21ce2f48594c" autoIncrement="false" autoIncrementSequenceName="consomem_codigo_trilha_seq" defaultValue="" name="codigo_trilha" nullable="0" physicalName="codigo_trilha" precision="3" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação das trilhas sonoras.</remarks>
+    </column>
+    <column id="COL114" populated="true" UUID="ce99c24d-b256-464a-a4a1-50684a53e3f1" autoIncrement="false" autoIncrementSequenceName="consomem_codigo_seq" defaultValue="" name="codigo_nivel" nullable="0" physicalName="codigo_nivel" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1123" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1122" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1124" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX115" populated="true" UUID="f7642331-0088-48a2-9976-1cd98497ba8f" clustered="false" name="consomem_pk" physicalName="consomem_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC116" populated="true" UUID="909e663a-2b1e-43f9-822c-86da7620979c" ascendingOrDescending="UNSPECIFIED" column-ref="COL113" name="codigo_trilha" physicalName="codigo_trilha" />
+     <index-column id="IDC117" populated="true" UUID="e97c52bf-eca4-4578-ae38-92962f395183" ascendingOrDescending="UNSPECIFIED" column-ref="COL114" name="codigo_nivel" physicalName="codigo_nivel" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB118" populated="true" UUID="8073570a-69bb-4897-8e3b-b15024340ffd" name="personalizacoes" objectType="TABLE" physicalName="personalizacoes" >
+   <remarks>Tabela de relacionamento N:N entre jogos e configurações.</remarks>
+   <folder id="FOLTAB1181" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL119" populated="true" UUID="3d8261da-916a-4501-9f77-d4248b4f6fcb" autoIncrement="false" autoIncrementSequenceName="personalizacoes_codigo_seq" defaultValue="" name="codigo_configuracoes" nullable="0" physicalName="codigo_configuracoes" precision="3" primaryKeySeq="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação das configurações.</remarks>
+    </column>
+    <column id="COL120" populated="true" UUID="4cfd5f22-7d2d-40e8-b8a2-6fa7eb4a2773" autoIncrement="false" autoIncrementSequenceName="personalizacoes_codigo_jogo_seq" defaultValue="" name="codigo_jogo" nullable="0" physicalName="codigo_jogo" precision="3" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks>PFK da tabela. É a PK composta da tabela e código de identificação dos jogos.</remarks>
+    </column>
+    <column id="COL121" populated="true" UUID="4620a170-fba8-4de3-ae74-f8ba2479da8c" autoIncrement="false" autoIncrementSequenceName="personalizacoes_data_configuracao_seq" defaultValue="" name="data_configuracao" nullable="0" physicalName="data_configuracao" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks>Data em que foi feita a última modificação.</remarks>
+    </column>
+    <column id="COL122" populated="true" UUID="cc70054f-159f-49a4-89fe-d824ee4b2530" autoIncrement="false" autoIncrementSequenceName="personalizacoes_hora_seq" defaultValue="" name="hora" nullable="0" physicalName="hora" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
+     <remarks>Hora em que foi feita a última modificação.</remarks>
+    </column>
+    <column id="COL123" populated="true" UUID="20307ac3-0c71-4b38-9860-3a6894f8ec3b" autoIncrement="false" autoIncrementSequenceName="personalizacoes_imagem_seq" defaultValue="" name="imagem" nullable="0" physicalName="imagem" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.</remarks>
+    </column>
+    <column id="COL124" populated="true" UUID="1db9c378-5b4b-4430-a307-e10a94b28ae2" autoIncrement="false" autoIncrementSequenceName="musicas_codigo_som_seq" defaultValue="" name="codigo_som" nullable="0" physicalName="codigo_som" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>FK para a tabela música.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1183" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1182" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1184" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX125" populated="true" UUID="a9a263bd-3b45-4c93-9a08-b7232842bc33" clustered="false" name="personalizacoes_pk" physicalName="personalizacoes_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC126" populated="true" UUID="f5686e6d-c9f1-44c3-9a3e-a0baa6748472" ascendingOrDescending="UNSPECIFIED" column-ref="COL119" name="codigo_configuracoes" physicalName="codigo_configuracoes" />
+     <index-column id="IDC127" populated="true" UUID="33a2a9ea-648d-40f8-8b3d-454e7fd5ccad" ascendingOrDescending="UNSPECIFIED" column-ref="COL120" name="codigo_jogo" physicalName="codigo_jogo" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB128" populated="true" UUID="24a8bb1d-d78c-459e-baee-8d61940a1dd8" name="musicas" objectType="TABLE" physicalName="musicas" >
+   <remarks>Tabela de identificação de músicas. Associa cada código único a uma música específica.</remarks>
+   <folder id="FOLTAB1281" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL129" populated="true" UUID="0a51ac21-c088-4486-ae58-b26343099078" autoIncrement="false" autoIncrementSequenceName="musicas_codigo_som_seq" defaultValue="" name="codigo_som" nullable="0" physicalName="codigo_som" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada música.</remarks>
+    </column>
+    <column id="COL130" populated="true" UUID="d7d7c437-233b-4fd4-bd76-f661b01ca243" autoIncrement="false" autoIncrementSequenceName="musicas_som_seq" defaultValue="" name="som" nullable="0" physicalName="som" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Música escolhida.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1283" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1282" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1284" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX131" populated="true" UUID="477ea5e7-1bf4-462a-9f8a-f42b0d7120e0" clustered="false" name="musicas_pk" physicalName="musicas_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC132" populated="true" UUID="bfb26bc6-bccb-45be-881f-f710ffe613c1" ascendingOrDescending="UNSPECIFIED" column-ref="COL129" name="codigo_som" physicalName="codigo_som" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB133" populated="true" UUID="d7003ba7-4f58-4d95-9cee-d80733ee5939" name="sprites" objectType="TABLE" physicalName="sprites" >
+   <remarks>Armazena as sprites (imagens que representam as animações) dos personagens.</remarks>
+   <folder id="FOLTAB1331" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL134" populated="true" UUID="3946ebd9-f318-48f3-b3cf-82e6dbf3a1fa" autoIncrement="false" autoIncrementSequenceName="sprites_codigo_imagem_seq" defaultValue="" name="codigo_imagem" nullable="0" physicalName="codigo_imagem" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada imagem de cada sprite do personagem.</remarks>
+    </column>
+    <column id="COL135" populated="true" UUID="88446607-5e17-47c3-89d7-b5ff64890e69" autoIncrement="false" autoIncrementSequenceName="sprites_imagem_seq" defaultValue="" name="imagem" nullable="0" physicalName="imagem" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1333" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1332" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1334" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX136" populated="true" UUID="692fc98b-116c-4dd7-bf91-432833ee9e94" clustered="false" name="sprites_pk" physicalName="sprites_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC137" populated="true" UUID="020990ab-bcfb-429a-a9a2-2d26343bba69" ascendingOrDescending="UNSPECIFIED" column-ref="COL134" name="codigo_imagem" physicalName="codigo_imagem" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB138" populated="true" UUID="38a9490f-41c5-41d1-a76f-28bb6189e269" name="local_pais" objectType="TABLE" physicalName="local_pais" >
+   <remarks>Tabela de identificação de países. Associa cada código único a um país específico.</remarks>
+   <folder id="FOLTAB1381" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL139" populated="true" UUID="872fc6f3-991f-464e-9e9c-530c5b10ad10" autoIncrement="false" autoIncrementSequenceName="local_pais_codigo_pais_seq" defaultValue="" name="codigo_pais" nullable="0" physicalName="codigo_pais" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada país do jogador.</remarks>
+    </column>
+    <column id="COL140" populated="true" UUID="e484b350-f8e6-4305-8b58-0446658c5121" autoIncrement="false" autoIncrementSequenceName="local_pais_pais_seq" defaultValue="" name="pais" nullable="0" physicalName="pais" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome do país.</remarks>
+    </column>
+    <column id="COL141" populated="true" UUID="1ce64295-fcd1-4dbb-bb20-5b31778bd71b" autoIncrement="false" autoIncrementSequenceName="local_pais_codigo_uf_seq" defaultValue="" name="codigo_uf" nullable="1" physicalName="codigo_uf" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada Estado do jogador.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1383" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1382" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1384" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX142" populated="true" UUID="742e1fc4-1ba3-4e1f-b2ca-390a14f6f326" clustered="false" name="local_pais_pk" physicalName="local_pais_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC143" populated="true" UUID="0827f5b2-31e8-4538-86bb-2bdb56ac89af" ascendingOrDescending="UNSPECIFIED" column-ref="COL139" name="codigo_pais" physicalName="codigo_pais" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB144" populated="true" UUID="b7009fba-cbc5-42f3-a011-ef4734fcfdf4" name="local_uf" objectType="TABLE" physicalName="local_uf" >
+   <remarks>Tabela de identificação dos Estados. Associa cada código único a um estado específico de cada país.</remarks>
+   <folder id="FOLTAB1441" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL145" populated="true" UUID="80824126-1154-4dbb-9f26-d0f591634796" autoIncrement="false" autoIncrementSequenceName="local_uf_codigo_uf_seq" defaultValue="" name="codigo_uf" nullable="0" physicalName="codigo_uf" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks>PK da tabela. Código de identificação de cada Estado do jogador.</remarks>
+    </column>
+    <column id="COL146" populated="true" UUID="cef2a4e2-b71b-4284-9f6b-cc6a57f922ab" autoIncrement="false" autoIncrementSequenceName="local_uf_uf_seq" defaultValue="" name="uf" nullable="0" physicalName="uf" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks>Nome do estado.</remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1443" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1442" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1444" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX147" populated="true" UUID="b2ef14e7-3934-430a-9b1b-f25c4fd1e4ec" clustered="false" name="local_uf_pk" physicalName="local_uf_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC148" populated="true" UUID="465ac0c6-3bcd-411f-98ce-33e0eb5efc4e" ascendingOrDescending="UNSPECIFIED" column-ref="COL145" name="codigo_uf" physicalName="codigo_uf" />
+    </index>
+   </folder>
+  </table>
+  <relationships>
+   <relationship id="REL149" populated="true" UUID="ce3125a4-ed2f-4c80-962c-638ed8d9d149" deferrability="7" deleteRule="3" fk-table-ref="TAB88" fkCardinality="6" identifying="true" name="cenarios_compoe_fk" physicalName="cenarios_compoe_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP150" populated="true" UUID="711ac109-0793-461c-8f8f-0f345e647733" fk-column-ref="COL89" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   </relationship>
+   <relationship id="REL151" populated="true" UUID="83c2cd51-d976-4f63-b078-b0028f58dd5e" deferrability="7" deleteRule="3" fk-table-ref="TAB94" fkCardinality="6" identifying="true" name="personagens_envolvem_fk" physicalName="personagens_envolvem_fk" pk-table-ref="TAB7" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP152" populated="true" UUID="ebb93c76-791b-4659-bde6-c1ca20e2f663" fk-column-ref="COL96" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL8" />
+   </relationship>
+   <relationship id="REL153" populated="true" UUID="7d038a63-834f-484f-9a89-e0bed6529bb4" deferrability="7" deleteRule="3" fk-table-ref="TAB52" fkCardinality="7" identifying="true" name="niveis_composicoes_fk" physicalName="niveis_composicoes_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP154" populated="true" UUID="a716424a-5b13-440b-8c36-56b9bf5e8edf" fk-column-ref="COL53" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL155" populated="true" UUID="cf057f05-8768-49aa-985c-79936883fb5f" deferrability="7" deleteRule="3" fk-table-ref="TAB88" fkCardinality="7" identifying="true" name="niveis_compoe_fk" physicalName="niveis_compoe_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP156" populated="true" UUID="59e43e20-d5ff-4980-a211-7cd384337917" fk-column-ref="COL90" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL157" populated="true" UUID="2535d061-8bbb-48f6-a9a3-0c27c934917a" deferrability="7" deleteRule="3" fk-table-ref="TAB94" fkCardinality="7" identifying="true" name="niveis_envolvem_fk" physicalName="niveis_envolvem_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP158" populated="true" UUID="b0f6de0d-448c-4e40-9be1-83ef8d6483c9" fk-column-ref="COL95" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL159" populated="true" UUID="8a6a3ab8-eb68-4a7c-ad22-4075f6107bdf" deferrability="7" deleteRule="3" fk-table-ref="TAB60" fkCardinality="7" identifying="true" name="niveis_partidas_fk" physicalName="niveis_partidas_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP160" populated="true" UUID="2cf4672d-7cf2-4a48-879d-eebc42f6a5eb" fk-column-ref="COL62" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL161" populated="true" UUID="9a4990fa-208a-4ec9-b095-47c090f5a09a" deferrability="7" deleteRule="3" fk-table-ref="TAB100" fkCardinality="6" identifying="true" name="niveis_realizam_fk" physicalName="niveis_realizam_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP162" populated="true" UUID="8d6b6e85-9a49-4e46-aa61-f991398b8b15" fk-column-ref="COL102" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL163" populated="true" UUID="50026147-4860-4b4f-a2df-b0c81545bfb3" deferrability="7" deleteRule="3" fk-table-ref="TAB112" fkCardinality="7" identifying="true" name="niveis_consomem_fk" physicalName="niveis_consomem_fk" pk-table-ref="TAB13" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP164" populated="true" UUID="61cda88f-76f4-4d0c-8a0c-69ee9c759118" fk-column-ref="COL114" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL14" />
+   </relationship>
+   <relationship id="REL165" populated="true" UUID="9e822a64-640b-42e4-852c-35fdab7c525f" deferrability="7" deleteRule="3" fk-table-ref="TAB52" fkCardinality="7" identifying="true" name="objetos_composicoes_fk" physicalName="objetos_composicoes_fk" pk-table-ref="TAB20" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP166" populated="true" UUID="9b6ae320-9494-4e0a-97ba-9adf9c6ff609" fk-column-ref="COL54" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL21" />
+   </relationship>
+   <relationship id="REL167" populated="true" UUID="00ceae74-9f68-4259-aef5-02f7941e64d1" deferrability="7" deleteRule="3" fk-table-ref="TAB13" fkCardinality="7" identifying="false" name="jogos_niveis_fk" physicalName="jogos_niveis_fk" pk-table-ref="TAB26" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP168" populated="true" UUID="c4c8a909-2fec-4b87-8427-1163a2945408" fk-column-ref="COL17" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL27" />
+   </relationship>
+   <relationship id="REL169" populated="true" UUID="964f7c49-d851-4a22-9fb6-19a21f167a02" deferrability="7" deleteRule="3" fk-table-ref="TAB118" fkCardinality="6" identifying="true" name="jogos_personalizacoes_fk" physicalName="jogos_personalizacoes_fk" pk-table-ref="TAB26" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP170" populated="true" UUID="18aef6a0-c588-4594-a3af-8965f186dc83" fk-column-ref="COL120" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL27" />
+   </relationship>
+   <relationship id="REL171" populated="true" UUID="ead71e0e-4c2c-40a7-a44e-5a1eb268416d" deferrability="7" deleteRule="3" fk-table-ref="TAB118" fkCardinality="7" identifying="true" name="configuracoes_personalizacoes_fk" physicalName="configuracoes_personalizacoes_fk" pk-table-ref="TAB34" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP172" populated="true" UUID="e1b19e2c-cb66-4e86-a0c1-f17641a3e45c" fk-column-ref="COL119" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL35" />
+   </relationship>
+   <relationship id="REL173" populated="true" UUID="74915736-0d65-4fa8-a9c6-106505eedc9d" deferrability="7" deleteRule="3" fk-table-ref="TAB34" fkCardinality="7" identifying="false" name="background_configuracoes_fk" physicalName="background_configuracoes_fk" pk-table-ref="TAB42" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP174" populated="true" UUID="cbf1d32a-ee47-4e4c-b86d-bc26ec78fcb4" fk-column-ref="COL39" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL43" />
+   </relationship>
+   <relationship id="REL175" populated="true" UUID="704138f0-10d8-4575-ab81-807c0d3a1d80" deferrability="7" deleteRule="3" fk-table-ref="TAB34" fkCardinality="7" identifying="false" name="cores_configuracoes_fk" physicalName="cores_configuracoes_fk" pk-table-ref="TAB47" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP176" populated="true" UUID="432d42f7-dce1-4dca-af84-43a62705f8e7" fk-column-ref="COL38" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL48" />
+   </relationship>
+   <relationship id="REL177" populated="true" UUID="185d2fa8-422e-4090-8daa-cb9e613a0ecc" deferrability="7" deleteRule="3" fk-table-ref="TAB60" fkCardinality="6" identifying="true" name="jogadores_partidas_fk" physicalName="jogadores_partidas_fk" pk-table-ref="TAB71" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP178" populated="true" UUID="46ecd085-11c3-4c05-a58b-8175393a0307" fk-column-ref="COL61" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL72" />
+   </relationship>
+   <relationship id="REL179" populated="true" UUID="cc9b8623-9b36-450c-b3af-cd2b68886a44" deferrability="7" deleteRule="3" fk-table-ref="TAB100" fkCardinality="7" identifying="true" name="missoes_realizam_fk" physicalName="missoes_realizam_fk" pk-table-ref="TAB80" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP180" populated="true" UUID="186f5db5-be39-4c0d-b61c-8337c9a4fbaa" fk-column-ref="COL101" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL81" />
+   </relationship>
+   <relationship id="REL181" populated="true" UUID="3c5cbe8c-dc5b-4bba-b589-767cde3d4e07" deferrability="7" deleteRule="3" fk-table-ref="TAB112" fkCardinality="7" identifying="true" name="trilha_sonora_consomem_fk" physicalName="trilha_sonora_consomem_fk" pk-table-ref="TAB106" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP182" populated="true" UUID="b93a335b-ae53-4a88-99f9-88e2df524bf7" fk-column-ref="COL113" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL107" />
+   </relationship>
+   <relationship id="REL183" populated="true" UUID="9710f7bf-7e55-4ad5-bdb4-94b98d0ddbfc" deferrability="7" deleteRule="3" fk-table-ref="TAB118" fkCardinality="7" identifying="false" name="musicas_personalizacoes_fk" physicalName="musicas_personalizacoes_fk" pk-table-ref="TAB128" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP184" populated="true" UUID="cbad3469-c5e4-43da-91aa-c71b171e8754" fk-column-ref="COL124" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL129" />
+   </relationship>
+   <relationship id="REL185" populated="true" UUID="ec279388-64f3-47cd-9e82-94c4c16d755e" deferrability="7" deleteRule="3" fk-table-ref="TAB7" fkCardinality="7" identifying="false" name="sprites_personagens_fk" physicalName="sprites_personagens_fk" pk-table-ref="TAB133" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP186" populated="true" UUID="10e5c846-62ed-43b1-b278-e6ab24bf90d4" fk-column-ref="COL10" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL134" />
+   </relationship>
+   <relationship id="REL187" populated="true" UUID="cf7a13bf-bf3e-4723-bea9-f39aebd0fdd4" deferrability="7" deleteRule="3" fk-table-ref="TAB71" fkCardinality="7" identifying="false" name="local_pais_jogadores_fk" physicalName="local_pais_jogadores_fk" pk-table-ref="TAB138" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP188" populated="true" UUID="0eb51570-8faa-4daa-851b-de888afe0ca2" fk-column-ref="COL77" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL139" />
+   </relationship>
+   <relationship id="REL189" populated="true" UUID="899b3b69-705c-4564-937b-cea3229832dd" deferrability="7" deleteRule="3" fk-table-ref="TAB138" fkCardinality="7" identifying="false" name="local_uf_local_pais_fk" physicalName="local_uf_local_pais_fk" pk-table-ref="TAB144" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP190" populated="true" UUID="db55e093-686a-478c-8fe4-54628b2c1434" fk-column-ref="COL141" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL145" />
+   </relationship>
+  </relationships>
+ </target-database>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="jogo"> </ddl-generator>
+ <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+ <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+ <play-pen zoom="1.0" viewportX="27" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB1" x="404" y="103" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB7" x="1416" y="69" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB13" x="911" y="298" bgColor="0xc8b7ea" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB20" x="1530" y="298" bgColor="0xe4e4b8" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB26" x="1087" y="461" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB34" x="1674" y="412" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB42" x="1809" y="650" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB47" x="1505" y="667" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB52" x="1200" y="295" bgColor="0xe4e4b8" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB60" x="568" y="304" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB71" x="292" y="323" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB80" x="342" y="700" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB88" x="668" y="108" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB94" x="1088" y="103" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB100" x="528" y="530" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB106" x="701" y="693" bgColor="0xc7d0df" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB112" x="835" y="543" bgColor="0xc7d0df" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB118" x="1337" y="409" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB128" x="1188" y="669" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB133" x="1756" y="74" bgColor="0xb9bbf6" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB138" x="20" y="430" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB144" x="91" y="583" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL153" pkConnection="0.28" fkConnection="0.29" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL149" pkConnection="0.3614457831325301" fkConnection="0.45454545454545453" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL155" pkConnection="0.1059322033898305" fkConnection="0.48863636363636365" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL165" pkConnection="0.3614457831325301" fkConnection="0.4631578947368421" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL157" pkConnection="0.6586538461538461" fkConnection="0.1552346570397112" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL151" pkConnection="0.37349397590361444" fkConnection="0.7121212121212122" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL177" pkConnection="0.2702702702702703" fkConnection="0.2097902097902098" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL159" pkConnection="0.29" fkConnection="0.31788079470198677" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL179" pkConnection="0.6743295019157088" fkConnection="0.4253731343283582" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL161" pkConnection="0.12980769230769232" fkConnection="0.75" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL181" pkConnection="0.5913461538461539" fkConnection="0.44651162790697674" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL163" pkConnection="0.47596153846153844" fkConnection="0.5702127659574469" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL167" pkConnection="0.20930232558139536" fkConnection="0.8034934497816594" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL171" pkConnection="0.23931623931623933" fkConnection="0.208955223880597" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL169" pkConnection="0.2564102564102564" fkConnection="0.34328358208955223" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL175" pkConnection="0.35294117647058826" fkConnection="0.4" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL173" pkConnection="0.3614457831325301" fkConnection="0.7419354838709677" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL183" pkConnection="0.5814977973568282" fkConnection="0.189873417721519" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL185" pkConnection="0.4696969696969697" fkConnection="0.8795180722891566" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL187" pkConnection="0.4393939393939394" fkConnection="0.9253731343283582" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL189" pkConnection="0.42990654205607476" fkConnection="0.5796460176991151" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+ </play-pen>
+ <critic-manager>
+  <critic-grouping platformType="Generic" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="DB2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="H2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="HSQLDB" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="MySQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="Oracle" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="PostgreSQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2000" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2005" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+ </critic-manager>
+ <profiles topNCount="10">
+  </profiles>
+  <olap>
+  </olap>
+  <olap-gui>
+  </olap-gui>
+</architect-project>
