@@ -27,7 +27,7 @@ Versão SGBD   : PostgreSQL 14.2
 \echo Removendo o banco de dados "sistema_jogo" e o usuário "ocvitin":
 DROP DATABASE IF EXISTS sistema_jogo;
 
--- Remove o usuário "yuri", se existir:
+-- Remove o usuário "ocvitin", se existir:
 DROP USER IF EXISTS ocvitin;
 
 
@@ -42,7 +42,7 @@ DROP USER IF EXISTS ocvitin;
 -- segurança esse usuário não será um super-usuário. E como este é um
 -- script de demonstração, usaremos a super-senha "123".
 \echo
-\echo Criando o usuário "yuri":
+\echo Criando o usuário "ocvitin":
 CREATE USER ocvitin WITH
 	NOSUPERUSER
 	CREATEDB
