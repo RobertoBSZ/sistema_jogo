@@ -1,0 +1,454 @@
+DROP DATABASE IF EXISTS sistema_jogo;
+DROP USER IF EXISTS ocvitin;
+
+CREATE USER ocvitin WITH
+CREATEDB
+INHERIT
+LOGIN
+PASSWORD '123';
+
+CREATE DATABASE sistema_jogo WITH
+OWNER ocvitin
+TEMPLATE template0
+ENCODING 'UTF8'
+LC_COLLATE 'pt_BR.UTF-8'
+LC_CTYPE 'pt_BR.UTF-8'
+ALLOW_CONNECTIONS true;
+
+\connect "dbname=sistema_jogo user=ocvitin password=123";
+
+CREATE SCHEMA jogo AUTHORIZATION ocvitin;
+
+ALTER USER ocvitin
+SET SEARCH_PATH TO jogo, "$user", public;
+
+SET SEARCH_PATH TO jogo, "$user", public; 
+
+CREATE TABLE jogo.local_uf (
+                codigo_uf INTEGER NOT NULL,
+                uf VARCHAR(100) NOT NULL,
+                CONSTRAINT local_uf_pk PRIMARY KEY (codigo_uf)
+);
+COMMENT ON TABLE jogo.local_uf IS 'Tabela de identificação dos Estados. Associa cada código único a um estado específico de cada país.';
+COMMENT ON COLUMN jogo.local_uf.codigo_uf IS 'PK da tabela. Código de identificação de cada Estado do jogador.';
+COMMENT ON COLUMN jogo.local_uf.uf IS 'Nome do estado.';
+
+
+CREATE TABLE jogo.local_pais (
+                codigo_pais INTEGER NOT NULL,
+                pais VARCHAR(50) NOT NULL,
+                codigo_uf INTEGER,
+                CONSTRAINT local_pais_pk PRIMARY KEY (codigo_pais)
+);
+COMMENT ON TABLE jogo.local_pais IS 'Tabela de identificação de países. Associa cada código único a um país específico.';
+COMMENT ON COLUMN jogo.local_pais.codigo_pais IS 'PK da tabela. Código de identificação de cada país do jogador.';
+COMMENT ON COLUMN jogo.local_pais.pais IS 'Nome do país.';
+COMMENT ON COLUMN jogo.local_pais.codigo_uf IS 'PK da tabela. Código de identificação de cada Estado do jogador.';
+
+
+CREATE TABLE jogo.sprites (
+                codigo_imagem INTEGER NOT NULL,
+                imagem VARCHAR(100) NOT NULL,
+                CONSTRAINT sprites_pk PRIMARY KEY (codigo_imagem)
+);
+COMMENT ON TABLE jogo.sprites IS 'Armazena as sprites (imagens que representam as animações) dos personagens.';
+COMMENT ON COLUMN jogo.sprites.codigo_imagem IS 'PK da tabela. Código de identificação de cada imagem de cada sprite do personagem.';
+COMMENT ON COLUMN jogo.sprites.imagem IS 'Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.';
+
+
+CREATE TABLE jogo.musicas (
+                codigo_som INTEGER NOT NULL,
+                som VARCHAR(50) NOT NULL,
+                CONSTRAINT musicas_pk PRIMARY KEY (codigo_som)
+);
+COMMENT ON TABLE jogo.musicas IS 'Tabela de identificação de músicas. Associa cada código único a uma música específica.';
+COMMENT ON COLUMN jogo.musicas.codigo_som IS 'PK da tabela. Código de identificação de cada música.';
+COMMENT ON COLUMN jogo.musicas.som IS 'Música escolhida.';
+
+
+CREATE TABLE jogo.trilha_sonora (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                valencia VARCHAR(50) NOT NULL,
+                CONSTRAINT trilha_sonora_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.trilha_sonora IS 'Armazena as trilhas sonoras dos níveis.';
+COMMENT ON COLUMN jogo.trilha_sonora.codigo IS 'PK da tabela. É o código de identificação de cada trilha sonora.';
+COMMENT ON COLUMN jogo.trilha_sonora.nome IS 'Nome da trilha sonora.';
+COMMENT ON COLUMN jogo.trilha_sonora.valencia IS 'Valência. Pode ser negativa, positiva e neutra.';
+
+
+CREATE TABLE jogo.missoes (
+                codigo_missoes CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                descricao VARCHAR(500),
+                tempo_max TIME,
+                pontuacao INTEGER NOT NULL,
+                CONSTRAINT missoes_pk PRIMARY KEY (codigo_missoes)
+);
+COMMENT ON TABLE jogo.missoes IS 'Armazena as missões dos níveis.';
+COMMENT ON COLUMN jogo.missoes.codigo_missoes IS 'PK da tabela. É o código de identificação de cada missão.';
+COMMENT ON COLUMN jogo.missoes.nome IS 'Nome da missão.';
+COMMENT ON COLUMN jogo.missoes.descricao IS 'Descrições sobre as missões.';
+COMMENT ON COLUMN jogo.missoes.tempo_max IS 'Tempo máximo para fazer a missão.';
+COMMENT ON COLUMN jogo.missoes.pontuacao IS 'Pontuação da missão.';
+
+
+CREATE TABLE jogo.jogadores (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                apelido VARCHAR(50) NOT NULL,
+                imagem VARCHAR(100) NOT NULL,
+                data_registro DATE NOT NULL,
+                codigo_pais INTEGER,
+                CONSTRAINT jogadores_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.jogadores IS 'Armazena informações sobre os jogadores.';
+COMMENT ON COLUMN jogo.jogadores.codigo IS 'PK da tabela. É o código de identificação de cada jogador.';
+COMMENT ON COLUMN jogo.jogadores.nome IS 'Nome do jogador.';
+COMMENT ON COLUMN jogo.jogadores.apelido IS 'Apelido do jogador. Também conhecido como nickname.';
+COMMENT ON COLUMN jogo.jogadores.imagem IS 'Foto de perfil do jogador. Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.';
+COMMENT ON COLUMN jogo.jogadores.data_registro IS 'Data de quando o jogador criou sua conta.';
+COMMENT ON COLUMN jogo.jogadores.codigo_pais IS 'PK da tabela. Código de identificação de cada país do jogador.';
+
+
+CREATE TABLE jogo.cores (
+                codigo_cor INTEGER NOT NULL,
+                cor VARCHAR(15) NOT NULL,
+                CONSTRAINT cores_pk PRIMARY KEY (codigo_cor)
+);
+COMMENT ON TABLE jogo.cores IS 'Tabela de identificação de cores. Associa cada código único a uma cor específica.';
+COMMENT ON COLUMN jogo.cores.codigo_cor IS 'PK da tabela. Código de identificação de cada cor.';
+COMMENT ON COLUMN jogo.cores.cor IS 'Hexadecimal da cor.';
+
+
+CREATE TABLE jogo.background (
+                codigo_imagem INTEGER NOT NULL,
+                imagem_fundo VARCHAR(100) NOT NULL,
+                CONSTRAINT background_pk PRIMARY KEY (codigo_imagem)
+);
+COMMENT ON TABLE jogo.background IS 'Tabela de identificação de imagens de fundo. Associa cada código único a uma imagem específica.';
+COMMENT ON COLUMN jogo.background.codigo_imagem IS 'PK da tabela. Código de identificação de cada imagem do background.';
+COMMENT ON COLUMN jogo.background.imagem_fundo IS 'Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.';
+
+
+CREATE TABLE jogo.configuracoes (
+                codigo CHAR(3) NOT NULL,
+                volume INTEGER NOT NULL,
+                brilho INTEGER NOT NULL,
+                codigo_cor INTEGER NOT NULL,
+                codigo_imagem INTEGER NOT NULL,
+                CONSTRAINT configuracoes_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.configuracoes IS 'Armazena configurações básicas de cada jogo.';
+COMMENT ON COLUMN jogo.configuracoes.codigo IS 'PK da tabela. É o código de identificação de cada configuração.';
+COMMENT ON COLUMN jogo.configuracoes.volume IS 'Volume geral de cada jogo. É uma valor de 0 a 100.';
+COMMENT ON COLUMN jogo.configuracoes.brilho IS 'Brilho geral do jogo. É uma valor de 0 a 100.';
+COMMENT ON COLUMN jogo.configuracoes.codigo_cor IS 'FK para a tabela cores.';
+COMMENT ON COLUMN jogo.configuracoes.codigo_imagem IS 'FK para a tabela background.';
+
+
+CREATE TABLE jogo.jogos (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                objetivo VARCHAR(100) NOT NULL,
+                numero_niveis INTEGER NOT NULL,
+                data_criacao DATE NOT NULL,
+                CONSTRAINT jogos_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.jogos IS 'Armazena o jogo.';
+COMMENT ON COLUMN jogo.jogos.codigo IS 'PK da tabela. É o código de identificação de cada jogo.';
+COMMENT ON COLUMN jogo.jogos.nome IS 'Nome do jogo.';
+COMMENT ON COLUMN jogo.jogos.objetivo IS 'Objetivo geral do jogo.';
+COMMENT ON COLUMN jogo.jogos.numero_niveis IS 'Quantidade de níveis que o jogo possui.';
+COMMENT ON COLUMN jogo.jogos.data_criacao IS 'Data do início da criação do jogo.';
+
+
+CREATE TABLE jogo.personalizacoes (
+                codigo_configuracoes CHAR(3) NOT NULL,
+                codigo_jogo CHAR(3) NOT NULL,
+                data_configuracao DATE NOT NULL,
+                hora TIME NOT NULL,
+                imagem VARCHAR(100) NOT NULL,
+                codigo_som INTEGER NOT NULL,
+                CONSTRAINT personalizacoes_pk PRIMARY KEY (codigo_configuracoes, codigo_jogo)
+);
+COMMENT ON TABLE jogo.personalizacoes IS 'Tabela de relacionamento N:N entre jogos e configurações.';
+COMMENT ON COLUMN jogo.personalizacoes.codigo_configuracoes IS 'PFK da tabela. É a PK composta da tabela e código de identificação das configurações.';
+COMMENT ON COLUMN jogo.personalizacoes.codigo_jogo IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos jogos.';
+COMMENT ON COLUMN jogo.personalizacoes.data_configuracao IS 'Data em que foi feita a última modificação.';
+COMMENT ON COLUMN jogo.personalizacoes.hora IS 'Hora em que foi feita a última modificação.';
+COMMENT ON COLUMN jogo.personalizacoes.imagem IS 'Guarda o caminho para a raiz da imagem. Não armazena a imagem em si.';
+COMMENT ON COLUMN jogo.personalizacoes.codigo_som IS 'FK para a tabela música.';
+
+
+CREATE TABLE jogo.objetos (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                descricao VARCHAR(700),
+                CONSTRAINT codigo_objetos_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.objetos IS 'Armazena os objetos que compôem os níveis dos jogos.';
+COMMENT ON COLUMN jogo.objetos.codigo IS 'PK da tabela. É o código de identificação de cada objeto.';
+COMMENT ON COLUMN jogo.objetos.nome IS 'Nome de cada objeto.';
+COMMENT ON COLUMN jogo.objetos.descricao IS 'Descrição dos elementos visuais e características do objeto.';
+
+
+CREATE TABLE jogo.niveis (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                objetivo VARCHAR(100) NOT NULL,
+                codigo_jogos CHAR(3) NOT NULL,
+                CONSTRAINT niveis_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.niveis IS 'Armazena os níveis de cada jogo.';
+COMMENT ON COLUMN jogo.niveis.codigo IS 'PK da tabela. É o código de identificação de cada nível.';
+COMMENT ON COLUMN jogo.niveis.nome IS 'Nome de cada nível.';
+COMMENT ON COLUMN jogo.niveis.objetivo IS 'Objetivo do nível.';
+COMMENT ON COLUMN jogo.niveis.codigo_jogos IS 'FK para a tabela jogos.';
+
+
+CREATE TABLE jogo.consomem (
+                codigo_trilha CHAR(3) NOT NULL,
+                codigo_nivel CHAR(3) NOT NULL,
+                CONSTRAINT consomem_pk PRIMARY KEY (codigo_trilha, codigo_nivel)
+);
+COMMENT ON TABLE jogo.consomem IS 'Tabela de relacionamento N:N entre níveis e trilha_sonora.';
+COMMENT ON COLUMN jogo.consomem.codigo_trilha IS 'PFK da tabela. É a PK composta da tabela e código de identificação das trilhas sonoras.';
+COMMENT ON COLUMN jogo.consomem.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+
+
+CREATE TABLE jogo.realizam (
+                codigo_missoes CHAR(3) NOT NULL,
+                codigo_nivel CHAR(3) NOT NULL,
+                CONSTRAINT realizam_pk PRIMARY KEY (codigo_missoes, codigo_nivel)
+);
+COMMENT ON TABLE jogo.realizam IS 'Tabela de relacionamento N:N entre missões e niveis.';
+COMMENT ON COLUMN jogo.realizam.codigo_missoes IS 'PFK da tabela. É a PK composta da tabela e código de identificação das missões.';
+COMMENT ON COLUMN jogo.realizam.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+
+
+CREATE TABLE jogo.partidas (
+                codigo_jogadores CHAR(3) NOT NULL,
+                codigo_nivel CHAR(3) NOT NULL,
+                data_inicio DATE NOT NULL,
+                data_fim DATE NOT NULL,
+                hora_inicio TIME NOT NULL,
+                hora_fim TIME NOT NULL,
+                pontuacao INTEGER NOT NULL,
+                CONSTRAINT partidas_pk PRIMARY KEY (codigo_jogadores, codigo_nivel)
+);
+COMMENT ON TABLE jogo.partidas IS 'Tabela de relacionamento N:N entre jogadores e niveis.';
+COMMENT ON COLUMN jogo.partidas.codigo_jogadores IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos jogadores.';
+COMMENT ON COLUMN jogo.partidas.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+COMMENT ON COLUMN jogo.partidas.data_inicio IS 'Data de início da partida.';
+COMMENT ON COLUMN jogo.partidas.data_fim IS 'Data da finalização da partida.';
+COMMENT ON COLUMN jogo.partidas.hora_inicio IS 'Hora em que a partida iniciou.';
+COMMENT ON COLUMN jogo.partidas.hora_fim IS 'Hora em que a partida encerrou.';
+COMMENT ON COLUMN jogo.partidas.pontuacao IS 'Pontuação feita pelo jogador na partida.';
+
+
+CREATE TABLE jogo.composicoes (
+                codigo_nivel CHAR(3) NOT NULL,
+                codigo_objeto CHAR(3) NOT NULL,
+                ponto_inicio VARCHAR(100) NOT NULL,
+                pontos INTEGER NOT NULL,
+                CONSTRAINT composicoes_pk PRIMARY KEY (codigo_nivel, codigo_objeto)
+);
+COMMENT ON TABLE jogo.composicoes IS 'Tabela de relacionamento N:N entre objetos e níveis. Armazena a posição inicial (spawn) dos objetos e seus pontos.';
+COMMENT ON COLUMN jogo.composicoes.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+COMMENT ON COLUMN jogo.composicoes.codigo_objeto IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos objetos.';
+COMMENT ON COLUMN jogo.composicoes.ponto_inicio IS 'Posição/coordenada inicial (spawn) de cada objeto em relação ao nível.';
+COMMENT ON COLUMN jogo.composicoes.pontos IS 'definem os espaços que podem ser ocupados por personagens e objetos (coordenadas)';
+
+
+CREATE TABLE jogo.personagens (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                codigo_imagem INTEGER NOT NULL,
+                CONSTRAINT codigo_personagens_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.personagens IS 'Armazena os personagens dos níveis do jogo.';
+COMMENT ON COLUMN jogo.personagens.codigo IS 'PK da tabela. É o código de identificação de cada personagem.';
+COMMENT ON COLUMN jogo.personagens.nome IS 'Nome completo de cada personagem.';
+COMMENT ON COLUMN jogo.personagens.codigo_imagem IS 'PK da tabela. Código de identificação de cada imagem de cada sprite do personagem.';
+
+
+CREATE TABLE jogo.envolvem (
+                codigo_nivel CHAR(3) NOT NULL,
+                codigo_personagem CHAR(3) NOT NULL,
+                CONSTRAINT envolvem_pk PRIMARY KEY (codigo_nivel, codigo_personagem)
+);
+COMMENT ON TABLE jogo.envolvem IS 'Tabela de relacionamento que liga personagens com níveis.';
+COMMENT ON COLUMN jogo.envolvem.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+COMMENT ON COLUMN jogo.envolvem.codigo_personagem IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos personagens.';
+
+
+CREATE TABLE jogo.cenarios (
+                codigo CHAR(3) NOT NULL,
+                nome VARCHAR(100) NOT NULL,
+                tema VARCHAR(100) NOT NULL,
+                CONSTRAINT codigo_cenario_pk PRIMARY KEY (codigo)
+);
+COMMENT ON TABLE jogo.cenarios IS 'Armazena cenários dos níveis.';
+COMMENT ON COLUMN jogo.cenarios.codigo IS 'PK da tabela. É o código de identificação de cada cenário.';
+COMMENT ON COLUMN jogo.cenarios.nome IS 'Nome do cenário de cada nível.';
+COMMENT ON COLUMN jogo.cenarios.tema IS 'Divisão de temas para agrupar cenários semelhantes.';
+
+
+CREATE TABLE jogo.compoem (
+                codigo_cenario CHAR(3) NOT NULL,
+                codigo_nivel CHAR(3) NOT NULL,
+                CONSTRAINT compoem_pk PRIMARY KEY (codigo_cenario, codigo_nivel)
+);
+COMMENT ON TABLE jogo.compoem IS 'Tabela de relacionamento N:N entre cenarios e niveis.';
+COMMENT ON COLUMN jogo.compoem.codigo_cenario IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos cenários.';
+COMMENT ON COLUMN jogo.compoem.codigo_nivel IS 'PFK da tabela. É a PK composta da tabela e código de identificação dos níveis.';
+
+
+ALTER TABLE jogo.local_pais ADD CONSTRAINT local_uf_local_pais_fk
+FOREIGN KEY (codigo_uf)
+REFERENCES jogo.local_uf (codigo_uf)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.jogadores ADD CONSTRAINT local_pais_jogadores_fk
+FOREIGN KEY (codigo_pais)
+REFERENCES jogo.local_pais (codigo_pais)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.personagens ADD CONSTRAINT sprites_personagens_fk
+FOREIGN KEY (codigo_imagem)
+REFERENCES jogo.sprites (codigo_imagem)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.personalizacoes ADD CONSTRAINT musicas_personalizacoes_fk
+FOREIGN KEY (codigo_som)
+REFERENCES jogo.musicas (codigo_som)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.consomem ADD CONSTRAINT trilha_sonora_consomem_fk
+FOREIGN KEY (codigo_trilha)
+REFERENCES jogo.trilha_sonora (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.realizam ADD CONSTRAINT missoes_realizam_fk
+FOREIGN KEY (codigo_missoes)
+REFERENCES jogo.missoes (codigo_missoes)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.partidas ADD CONSTRAINT jogadores_partidas_fk
+FOREIGN KEY (codigo_jogadores)
+REFERENCES jogo.jogadores (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.configuracoes ADD CONSTRAINT cores_configuracoes_fk
+FOREIGN KEY (codigo_cor)
+REFERENCES jogo.cores (codigo_cor)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.configuracoes ADD CONSTRAINT background_configuracoes_fk
+FOREIGN KEY (codigo_imagem)
+REFERENCES jogo.background (codigo_imagem)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.personalizacoes ADD CONSTRAINT configuracoes_personalizacoes_fk
+FOREIGN KEY (codigo_configuracoes)
+REFERENCES jogo.configuracoes (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.niveis ADD CONSTRAINT jogos_niveis_fk
+FOREIGN KEY (codigo_jogos)
+REFERENCES jogo.jogos (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.personalizacoes ADD CONSTRAINT jogos_personalizacoes_fk
+FOREIGN KEY (codigo_jogo)
+REFERENCES jogo.jogos (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.composicoes ADD CONSTRAINT objetos_composicoes_fk
+FOREIGN KEY (codigo_objeto)
+REFERENCES jogo.objetos (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.composicoes ADD CONSTRAINT niveis_composicoes_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.compoem ADD CONSTRAINT niveis_compoe_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.envolvem ADD CONSTRAINT niveis_envolvem_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.partidas ADD CONSTRAINT niveis_partidas_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.realizam ADD CONSTRAINT niveis_realizam_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.consomem ADD CONSTRAINT niveis_consomem_fk
+FOREIGN KEY (codigo_nivel)
+REFERENCES jogo.niveis (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.envolvem ADD CONSTRAINT personagens_envolvem_fk
+FOREIGN KEY (codigo_personagem)
+REFERENCES jogo.personagens (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE jogo.compoem ADD CONSTRAINT cenarios_compoe_fk
+FOREIGN KEY (codigo_cenario)
+REFERENCES jogo.cenarios (codigo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
